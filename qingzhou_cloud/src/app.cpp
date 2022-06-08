@@ -58,6 +58,28 @@ app::app(ros::NodeHandle nh) {
 
  }
 
+  //****给move_base下发目标点******//
+void app::sendGoal(float x, float y)
+{
+    //其实不用while循环
+    //while(true) {
+    current_goal.header.stamp = ros::Time::now();
+    current_goal.header.frame_id = "base_link"; //******************更换成小车的坐标系名称
+
+    current_goal.pose.position.x = x;
+    current_goal.pose.position.y = y;
+    current_goal.pose.position.z = 0; //*********这里不用z
+
+    current_goal.pose.orientation.x = 0; //**********这里应该现场量一下
+    current_goal.pose.orientation.y = 0;
+    current_goal.pose.orientation.z = 0;
+    current_goal.pose.orientation.w = 0;
+
+    pub_app_move_base_simple_goal.publish(current_goal);
+    //}
+}
+ //****给move_base下发目标点******//
+
   double getYaw(geometry_msgs::PoseStamped pose)
   {
       return tf2::getYaw(pose.pose.orientation);
