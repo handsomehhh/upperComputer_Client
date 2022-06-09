@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<launch>
+    <node name="qingzhou_cloud" pkg="qingzhou_cloud" type="qingzhou_cloud" output="screen"/>
+    <param name="cloudsendrate" value="10" type="int"/>
+    <param name="mfcCloudIP" value="192.168.31.155" type="string"/>   <!--  127.0.0.1  192.168.43.48 -->
+    <param name="mfcCloudPortNum" value="9999" type="int"/>  
+    <param name="bdebug" value = "1" type = "int" />   
+
+</launch>
